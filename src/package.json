@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@tarojs/cli": "^3.0.15",
+    "axios": "^0.21.0",
     "bytenode": "^1.1.7",
     "cheerio": "^1.0.0-rc.3",
     "child_process": "^1.0.2",

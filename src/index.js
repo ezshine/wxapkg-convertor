@@ -16,7 +16,6 @@ const fs = require("fs");
 const package = require("./package.json");
 const bn = require('bytenode');
 const path = require('path');
-const http = require('http');
 const userDataPath = app.getPath ('userData');
 
 let mainWindow;
@@ -25,6 +24,33 @@ let mainWindow;
 var windowobj;
 var defaultSize={width:300,height:300};
 // if (process.platform == 'darwin') app.dock.hide();
+
+ipcMain.on("showNotification",function(event,obj){
+	// console.log(obj);
+	showNotification(obj.msg,{title:obj.title,icon:obj.icon,click:()=>{
+		shell.openExternal(obj.url);
+	}})
+})
+
+function showNotification(msg='',options){
+	if(!Notification.isSupported())return;
+
+	if(!options)options={};
+
+	let notification = new Notification({
+	  title: options.title??"提醒您",
+	  body: msg,
+	  icon:nativeImage.createFromPath(path.posix.join(__dirname,options.icon)),
+	  silent: options.silent??false
+	})
+	notification.show();
+
+	if(options.click){
+		notification.addListener("click",function(e){
+			options.click();
+		});
+	}
+}
 
 function createMainWindow(loadpath) {
 	const {
