@@ -1,1 +1,4 @@
 .DS_Store
+src/dont_include/
+src/dont_include.js
+src/node_modules/

@@ -1,0 +1,64 @@
+<view class="margin-sm padding-sm bg-white radius shadow shadow-lg text-xl">
+    <view class="cu-form-group margin-top mc-bg-main">
+        <view class="title">{{config.salary}}</view>
+        <input bindinput="mvvmAction" data-name="salary" placeholder="请输入" type="digit" value="{{salary}}"></input>
+    </view>
+    <view class="cu-form-group margin-top-sm mc-bg-main">
+        <view class="title">{{config.insur}}</view>
+        <input bindinput="mvvmAction" data-name="insur" placeholder="请输入" type="digit" value="{{insur}}"></input>
+    </view>
+    <view class="cu-form-group margin-top-sm mc-bg-main">
+        <view class="title">{{config.discus}}</view>
+        <input bindinput="mvvmAction" data-name="discus" placeholder="请输入(可不填)" type="digit" value="{{discus}}"></input>
+    </view>
+    <view class="cu-form-group margin-top-sm mc-bg-main">
+    2019年开始个人月薪起征点是5000元哦
+	</view>
+    <view class=" padding margin-top-lg">
+        <button bindtap="didStart" class="cu-btn block radius bg-green text-xl">
+      开始计算   
+    </button>
+    </view>
+</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+    <image class="png" mode="aspectFit" src="/images/logo.png"></image>
+    <view class="gray-text">计算中...</view>
+</view>
+<view class="margin-sm padding-sm bg-white radius shadow shadow-lg text-xl" wx:if="{{showResult}}">
+    <view class="padding-sm margin-top mc-bg-main"> 
+    您税后到手工资为：
+    <span class="age-text">
+    {{result.taxN}}
+    </span>
+    元
+  </view>
+    <view class="padding-sm margin-top mc-bg-main">
+    您要缴纳的税额为：
+    <span class="age-text">
+    {{result.tax}}
+    </span>
+    元
+  </view>
+    <view class="padding-sm margin-top mc-bg-main">
+    适用的税率等级是：
+    <span class="age-text">
+    {{result.cur*100}}
+    </span>
+    %
+  </view>
+    <view class="padding-sm">
+        <button class="share-button" openType="share">分享</button>
+    </view>
+</view>
+<view class="padding mc-tip-text">
+    <view class="mc-tip-title">2019年最新个税计算说明：</view>
+    <view>月薪5000及5000以下不需要缴税</view>
+    <view>月薪5000到8000的部分为3%</view>
+    <view>月薪8000到17000的部分为10%</view>
+    <view>月薪17000到30000的部分为20%</view>
+    <view>月薪30000到40000的部分为25%</view>
+    <view>月薪40000到60000的部分为30%</view>
+    <view>月薪60000到85000的部分为35%</view>
+    <view>月薪85000以上的部分为45%</view>
+</view>
+<ad adTheme="white" adType="grid" gridCount="5" gridOpacity="0.8" unitId="adunit-8c80d4f8ce119727"></ad>

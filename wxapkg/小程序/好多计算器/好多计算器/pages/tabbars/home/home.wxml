@@ -1,0 +1,15 @@
+<scroll-view scrollY class="scrollPage">
+    <view style="width:100%; height:36rpx"></view>
+    <view class="nav-list">
+        <navigator class="nav-li bg-{{item.color}}" hoverClass="none" openType="navigate" url="{{item.path}}" wx:for="{{elements}}" wx:key="key">
+            <view class="nav-title">{{item.title}}</view>
+        </navigator>
+        <view class="nav-li bg-olive">
+            <view bindtap="toCharts" class="nav-title">图表生成器</view>
+        </view>
+    </view>
+    <view class="cu-tabbar-height"></view>
+    <view class="adContainer">
+        <ad unitId="adunit-8e80d32ec353f6dd"></ad>
+    </view>
+</scroll-view>

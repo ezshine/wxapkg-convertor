@@ -1,0 +1,23 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/ptax/ptax",
+        "pages/house/house",
+        "pages/age/age",
+        "pages/loan/loan",
+        "pages/rate/rate",
+        "pages/tax/tax",
+        "pages/about/about",
+        "pages/day/day",
+        "pages/date/date"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#FFFFFF",
+        "navigationBarTitleText": "好多计算器",
+        "navigationBarTextStyle": "black"
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wxf967f659a2494ab9"
+    ]
+}

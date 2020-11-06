@@ -1,0 +1,50 @@
+<view class="margin-sm padding-sm bg-white radius shadow shadow-lg text-xl">
+    <view class="cu-form-group margin-top mc-bg-main">
+        <view class="title">{{config.total}}</view>
+        <input bindinput="mvvmAction" data-name="total" placeholder="请输入" type="digit" value="{{total}}"></input>
+        <text>元</text>
+    </view>
+    <view class="cu-form-group margin-top mc-bg-main">
+        <view class="title">{{config.month}}</view>
+        <input bindinput="mvvmAction" data-name="month" placeholder="请输入" type="digit" value="{{month}}"></input>
+        <text>月</text>
+    </view>
+    <view class="cu-form-group margin-top mc-bg-main">
+        <view class="title">{{config.per}}</view>
+        <input bindinput="mvvmAction" data-name="per" placeholder="请输入" type="digit" value="{{per}}"></input>
+        <text>元</text>
+    </view>
+    <view class=" padding margin-top-lg">
+        <button bindtap="didStart" class="cu-btn block radius bg-green text-xl">
+      开始计算   
+    </button>
+    </view>
+</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+    <image class="png" mode="aspectFit" src="/images/logo.png"></image>
+    <view class="gray-text">计算中...</view>
+</view>
+<view class="margin-sm padding-sm bg-white radius shadow shadow-lg text-xl" wx:if="{{showResult&&!result.error}}">
+    <view class="padding-sm margin-top mc-bg-main">
+    真实年利率：
+    <span class="age-text">
+    {{result.rate}}
+    </span>
+    %
+  </view>
+    <view class="padding-sm">
+        <button class="share-button" openType="share">分享</button>
+    </view>
+</view>
+<view class="margin-sm padding-sm bg-white radius shadow shadow-lg text-xl" wx:if="{{showResult&&result.error=='error'}}">
+    <view class="padding-sm margin-top">
+    {{result.msg}}
+  </view>
+    <view class="padding-sm"></view>
+</view>
+<view class="padding mc-tip-text">
+    <view class="mc-tip-title">利率计算说明：</view>
+    <view>等额本息还款情况下，根据贷款总额、时长、每月还款额计算实际贷款的真实年利率。</view>
+    <view class="mc-tip-min">小提示：很多情况下，各种信贷机构所说的利率都不是真实利率，而是名义利率。贷款期限越长两者之间的差异会越大。</view>
+</view>
+<ad adTheme="white" adType="grid" gridCount="5" gridOpacity="0.8" unitId="adunit-cc03fe747c141734"></ad>

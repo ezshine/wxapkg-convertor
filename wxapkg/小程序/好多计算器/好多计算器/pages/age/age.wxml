@@ -1,0 +1,47 @@
+<view class="margin-sm padding-sm bg-white radius shadow shadow-lg text-xl">
+    <view class="cu-form-group margin-top mc-bg-main">
+        <view class="title">{{config.birthday}}</view>
+        <picker bindchange="mvvmAction" data-name="birthday" end="{{enddate}}" mode="date" value="{{birthday}}">
+            <view class="picker">
+      {{birthday?birthday:'请选择出身年月日'}}
+    </view>
+        </picker>
+    </view>
+    <view class=" padding margin-top-lg">
+        <button bindtap="didStart" class="cu-btn block radius bg-green text-xl">
+      开始计算   
+    </button>
+    </view>
+</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+    <image class="png" mode="aspectFit" src="/images/logo.png"></image>
+    <view class="gray-text">计算中...</view>
+</view>
+<view class="margin-sm padding-sm bg-white radius shadow shadow-lg text-xl" wx:if="{{showResult}}">
+    <view class="padding-sm margin-top mc-bg-main">
+    周岁：
+    <span class="age-text">
+    {{result.zage}}
+    </span>
+    岁
+  </view>
+    <view class="padding-sm margin-top mc-bg-main">
+    虚岁：
+    <span class="age-text">
+    {{result.xage}}
+    </span>
+    岁
+  </view>
+    <view class="padding-sm margin-top mc-bg-main">
+    今天是您出生的第
+    <span class="age-text">
+    {{result.days_all}}
+    </span>
+    天
+  </view>
+    <view class="padding-sm">
+        <button class="share-button" openType="share">分享</button>
+    </view>
+    <ad unitId="adunit-8e80d32ec353f6dd"></ad>
+</view>
+<ad adTheme="white" adType="grid" gridCount="5" gridOpacity="0.8" unitId="adunit-58ffdd0c61cf17a0"></ad>
