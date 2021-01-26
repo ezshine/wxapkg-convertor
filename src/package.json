@@ -1,8 +1,8 @@
 {
   "name": "wxapkgconvertor",
-  "displayName": "微信小程序转换王",
-  "version": "1.0.0",
-  "description": "将微信小程序包转换为微信小程序项目，uniapp项目，taro项目",
+  "displayName": "微信小程序反编译",
+  "version": "1.0.1",
+  "description": "将微信小程序包wxapkg反编译为微信小程序项目",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
@@ -12,25 +12,25 @@
   "build": {},
   "license": "GPL2",
   "keywords": [
-    "微信小程序"
+    "微信小程序",
+    "miniprogram",
+    "wxapkg",
+    "反编译"
   ],
   "author": "ezshine",
   "devDependencies": {
     "electron": "9.0.5"
   },
   "dependencies": {
-    "@tarojs/cli": "^3.0.15",
     "axios": "^0.21.0",
     "bytenode": "^1.1.7",
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.5",
     "child_process": "^1.0.2",
     "css-tree": "^1.0.0-alpha.28",
     "cssbeautify": "^0.3.1",
-    "escodegen": "^1.11.0",
+    "escodegen": "^2.0.0",
     "esprima": "^4.0.0",
-    "fix-path": "^3.0.0",
     "js-beautify": "^1.7.5",
-    "miniprogram-to-uniapp": "^1.0.76",
     "uglify-es": "^3.3.9",
     "vm2": "^3.6.0"
   }

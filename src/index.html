@@ -66,13 +66,10 @@
 		</style>
 		<script src="js/zepto.js"></script>
 		<script>
-			const {shell} = require('electron');
+			const {shell,ipcRenderer} = require('electron');
 			const package = require("./package.json");
 			const bn = require('bytenode');
 			const app = require('./app.jsc');
-
-			const fixPath = require('fix-path')
-  			fixPath()
 
 			function openExternal(url){
 				shell.openExternal(url);
@@ -80,6 +77,9 @@
 
 			Zepto(function($){
 				$("#version").text(package.version);
+				$("#version").click(function(){
+					ipcRenderer.send('openDevTools');
+				});
 			});
 		</script>
 	</head>
@@ -93,7 +93,7 @@
 			<div id='tips' style="-webkit-user-select: none;width: 100%;height:100%;position: absolute;z-index: 9;text-align: center;font-size: 30px;color:#fff;text-shadow: 0px 0px 3px #000;padding-top: 275px;">
 				
 			</div>
-			<div id='version' style="-webkit-user-select: none;width: 100%;position: absolute;z-index: 8;text-align: center;font-size: 16px;color:#F8F5BD;text-shadow: 0px 0px 3px #000;bottom: 110px;"></div>
+			<div id='version' style="cursor: pointer;-webkit-user-select: none;width: 100%;position: absolute;z-index: 10;text-align: center;font-size: 16px;color:#F8F5BD;text-shadow: 0px 0px 3px #000;bottom: 110px;"></div>
 			<img src="images/front.png" class="front" style="z-index: 6;"/>
 			<div style="width:101px;height: 101px;position: absolute;z-index:2;left:204px;top:292px;">
 				<img src="images/gear_lb.png" class='rotate2 gear2 front'/>
@@ -114,5 +114,7 @@
 			<img src="images/back.png" class="back" style="z-index: 1;"/>
 		</div>
 		<div style="-webkit-app-region:drag;width: 100%;height: 80px;position: absolute;z-index: 99;background: rgba(0,0,0,0.01);left: 0;top:0;"></div>
+		<div style="-webkit-app-region:drag;width: 80px;height: 100%;position: absolute;z-index: 99;background: rgba(0,0,0,0.01);left: 0;top:0;"></div>
+		<div style="-webkit-app-region:drag;width: 80px;height: 100%;position: absolute;z-index: 99;background: rgba(0,0,0,0.01);right: 0;top:0;"></div>
 	</body>
 </html>

@@ -32,6 +32,9 @@ ipcMain.on("showNotification",function(event,obj){
 	}})
 })
 
+
+ipcMain.on("openDevTools",openDevTools);
+
 function showNotification(msg='',options){
 	if(!Notification.isSupported())return;
 
@@ -102,8 +105,12 @@ function createMainWindow(loadpath) {
 	})
 
 	globalShortcut.register('CommandOrControl+`', () => {
-		mainWindow.webContents.openDevTools({mode:'detach',activate:true})
+		
 	});
+}
+
+function openDevTools(){
+	if(mainWindow)mainWindow.webContents.openDevTools({mode:'detach',activate:true})
 }
 
 // 限制只可以打开一个应用, 当运行第二个实例时退出第一个实例

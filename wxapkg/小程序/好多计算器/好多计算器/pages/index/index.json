@@ -1,7 +1,0 @@
-{
-    "usingComponents": {
-        "home": "/pages/tabbars/home/home",
-        "about": "/pages/tabbars/about/about",
-        "cu-custom": "/colorui/components/cu-custom"
-    }
-}

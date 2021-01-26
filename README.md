@@ -12,6 +12,18 @@
   <img align="left" alt="大帅ezshine | bilibili.com" width="21px" src="https://www.bilibili.com/favicon.ico" />
 </a>
 
+> 请将能成功反编译的wxapkg文件提交到本仓库中，不能反编译的小程序提交issue并附上wxapkg的下载地址。
+
+### changelog
+
+~~~~
+2021.01.26
+
+removed convertToTaro
+removed convertToUniapp
+optimized app size
+~~~~
+
 <br />
 <br />
 
@@ -31,7 +43,4 @@
 
 #### src文件夹
 > 此工具的源码
-
-## 下载地址
-[下载：v1.0.0版]()
 
