@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns --ignore dont_include",
-    "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico --ignore dont_include"
+    "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns --ignore dont_include --asar",
+    "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico --ignore dont_include --asar"
   },
   "build": {},
   "license": "GPL2",
