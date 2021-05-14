@@ -193,7 +193,9 @@ function doFile(name, cb, order) {
     }, {});
 }
 
-module.exports = {doFile: doFile};
+module.exports = {
+    doFile: doFile
+};
 if (require.main === module) {
     wu.commandExecute(doFile, "Unpack a wxapkg file.\n\n[-o] [-d] [-s=<Main Dir>] <files...>\n\n-d Do not delete transformed unpacked files.\n-o Do not execute any operation after unpack.\n-s=<Main Dir> Regard all packages provided as subPackages and\n              regard <Main Dir> as the directory of sources of the main package.\n<files...> wxapkg files to unpack");
 }

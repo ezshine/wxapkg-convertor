@@ -6,8 +6,8 @@ const exec = require('child_process').exec;
 const path = require('path')
 const fs = require('fs')
 const axios = require('axios');
-let iconv = require('iconv-lite');
 let wxUnpackedPath;
+const {doFile} = require("./wuWxapkg.js")
 let isRunning=false;
 Zepto(function($){
 	initDragIn();
@@ -38,22 +38,8 @@ function doUnpack(fname){
 	showTips("反编译中");
 	startAni();
 	isRunning=true;
-	let cmdStr = 'node wuWxapkg.js ' + fname
-	// 执行cmd命令的目录
-	let cmdPath = path.join(__dirname)
-	// 子进程名称
-	let workerProcess
-	// 执行命令行，如果命令不需要路径，或就是项目根目录，则不需要cwd参数：
-	workerProcess = exec(cmdStr, { cwd: cmdPath })
-	workerProcess.stdout.on('data', function(data) {
-		console.log(data);
-	})
-	// 打印错误的后台可执行程序输出
-	workerProcess.stderr.on('data', function(data) {
-		console.log(data);
-	})
-	// 退出之后的输出
-	workerProcess.on('close', function(code) {
+
+	doFile(fname,(res)=>{
 		isRunning=false;
 		wxUnpackedPath = fname.substring(0,fname.length-7);
 		showTips("反编译成功");
@@ -61,7 +47,7 @@ function doUnpack(fname){
 		setTimeout(function(){
 			showButtons();
 		},1000);
-	})
+	},[]);
 }
 function initDragIn() {
 	window.ondragover = function(e) {
@@ -73,6 +59,7 @@ function initDragIn() {
 
 	window.ondrop = function(e) {
 		if(isRunning)return;
+
 		e.preventDefault();
 		wxUnpackedPath = "";
 		let fileName = e.dataTransfer.files[0].path;
@@ -106,92 +93,20 @@ function openExternal(url){
 	shell.openExternal(url);
 }
 function goJuejin(){
-	openExternal("https://juejin.im/user/2955079655898093");
+	openExternal("https://space.bilibili.com/422646817");
 }
 function convertUniapp(){
-	isRunning=true;
-	showTips("转换为 uniapp 项目");
-	hideButtons();
-	startAni();
-	let cmdStr = path.join(__dirname,"node_modules","miniprogram-to-uniapp","bin","wtu") +" ./";
-	// 执行cmd命令的目录
-	let cmdPath = wxUnpackedPath;
-	// 子进程名称
-	let workerProcess
-
-	console.log(cmdStr,cmdPath);
-	// 执行命令行，如果命令不需要路径，或就是项目根目录，则不需要cwd参数：
-	workerProcess = exec(cmdStr, { cwd: cmdPath })
-	workerProcess.stdout.on('data', function(data) {
-		console.log(iconv.decode(Buffer.concat([data]), 'GBK'));
-	})
-	// 打印错误的后台可执行程序输出
-	workerProcess.stderr.on('data', function(data) {
-		console.log(iconv.decode(Buffer.concat([data]), 'GBK'));
-	})
-	// 退出之后的输出
-	workerProcess.on('close', function(code) {
-		isRunning=false;
-		console.log("convert uniapp done");
-		showTips("转换完成");
-		stopAni();
-		setTimeout(function(){
-			showButtons();
-		},1000);
-	})
+	openExternal("https://github.com/zhangdaren/miniprogram-to-uniapp");
 }
 function convertTaro(){
-	isRunning=true;
-	showTips("转换为 taro 项目");
-	hideButtons();
-	startAni();
-	let cmdStr = path.join(__dirname,"node_modules","@tarojs","cli","bin","taro") +" convert";
-	// 执行cmd命令的目录
-	let cmdPath = wxUnpackedPath;
-	// 子进程名称
-	let workerProcess
-	// 执行命令行，如果命令不需要路径，或就是项目根目录，则不需要cwd参数：
-	workerProcess = exec(cmdStr, { cwd: cmdPath })
-	workerProcess.stdout.on('data', function(data) {
-		console.log(data);
-	})
-	// 打印错误的后台可执行程序输出
-	workerProcess.stderr.on('data', function(data) {
-		console.log(data);
-	})
-	// 退出之后的输出
-	workerProcess.on('close', function(code) {
-		isRunning=false;
-		console.log("convertTaro done");
-		exec("mv taroConvert/ "+wxUnpackedPath+"_taro/", { cwd: cmdPath });
-		showTips("转换完成");
-		stopAni();
-		setTimeout(function(){
-			showButtons();
-		},1000);
-	})
+	openExternal("https://github.com/NervJS/taro");
 }
 
 let config = [
 	{
-		name:"全栈然叔",
-		userid:"1978776660216136",
-		head:"images/head_xia.jpg"
-	},
-	{
 		name:"大帅搞全栈",
 		userid:"2955079655898093",
 		head:"images/head_shuai.jpg"
-	},
-	{
-		name:"蜗牛老湿_大圣",
-		userid:"1556564194370270",
-		head:"images/head_sheng.jpg"
-	},
-	{
-		name:"杨村长",
-		userid:"325111174926350",
-		head:"images/head_yang.jpg"
 	}
 ];
 
@@ -199,7 +114,7 @@ async function getNews(){
 	//https://apinew.juejin.im/content_api/v1/article/query_list
 	let user = config[Math.floor(Math.random()*config.length)];
 	let res = await axios.post(
-		"https://apinew.juejin.im/content_api/v1/article/query_list",
+		"https://api.juejin.cn/content_api/v1/article/query_list",
 		{
 			"cursor": "0",
 			"sort_type": 2,

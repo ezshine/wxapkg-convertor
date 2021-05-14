@@ -1,13 +1,13 @@
 {
   "name": "wxapkgconvertor",
   "displayName": "微信小程序反编译",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "将微信小程序包wxapkg反编译为微信小程序项目",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns --ignore dont_include",
-    "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico --ignore dont_include"
+    "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns",
+    "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico"
   },
   "build": {},
   "license": "GPL2",
