@@ -1,6 +1,12 @@
 # wxapkg-convertor
 一个快速将微信小程序.wxapkg代码包转换成多端框架的工具
 
+### 使用命令行解包
+
+~~~
+node wuWxapkg.js 跳一跳.wxapkg
+~~~
+
 ### 关注我
 <a href="https://juejin.im/user/2955079655898093">
   <img align="left" alt="大帅搞全栈 | juejin.im" width="21px" src="https://juejin.im/favicon.ico" />
