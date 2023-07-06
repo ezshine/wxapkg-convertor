@@ -46,6 +46,10 @@ function doConfig(configFile, cb) {
                     root = root.substring(1);
                 }
                 let newPages = [];
+                // 有时候子包的pages被省略掉了，我们从总的pages里面把符合root开头的页面筛选出来贴合原有逻辑
+                if(!subPackage.pages){
+                    subPackage.pages = pages.filter(v=>v.startsWith(root));
+                }
                 for (let page of subPackage.pages) {
                     let items = page.replace(root, '');
                     newPages.push(items);
